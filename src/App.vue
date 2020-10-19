@@ -3,7 +3,7 @@
  * @Date: 2020-10-14 08:01:57
  * @Description: 
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-14 10:21:10
+ * @LastEditTime: 2020-10-19 16:48:05
  * @FilePath: \vue3.0-tung-base\src\App.vue
 -->
 <template>
@@ -11,6 +11,25 @@
     <router-view />
   </div>
 </template>
+
+<script lang="ts">
+import { provide } from "vue";
+import { post, get, upload } from "@/utils/api";
+import { message } from "ant-design-vue";
+import router from "@/router";
+
+export default {
+  setup() {
+    provide("globalProperties", {
+      post,
+      get,
+      upload,
+      message,
+      router
+    });
+  }
+};
+</script>
 
 <style lang="scss">
 #app {

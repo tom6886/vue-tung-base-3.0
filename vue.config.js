@@ -5,7 +5,7 @@
  * @Date: 2020-10-14 09:38:56
  * @Description:
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-14 16:49:14
+ * @LastEditTime: 2020-10-19 16:05:48
  * @FilePath: \vue3.0-tung-base\vue.config.js
  */
 const TerserPlugin = require("terser-webpack-plugin");
@@ -47,9 +47,9 @@ module.exports = {
           javascriptEnabled: true
         }
       }
-    },
+    }
     // 启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension: false
+    // requireModuleExtension: false
   },
   configureWebpack: config => {
     if (process.env.NODE_ENV === "production") {
@@ -95,7 +95,15 @@ module.exports = {
     port: 10000,
     https: false,
     hotOnly: false,
-    proxy: null,
+    proxy: {
+      "/api": {
+        target: "http://localhost:10010/", // target表示代理的服务器url
+        pathRewrite: {
+          // pathRewrite表示路径重写，key表示一个正则，value表示别名
+          "^/api": "/" // 即用 '/api'表示'http://localhost:3000/api'
+        }
+      }
+    },
     disableHostCheck: true
   }
 };

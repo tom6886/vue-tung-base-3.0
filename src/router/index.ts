@@ -12,14 +12,14 @@ import routes from "./routers";
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 });
 
 router.beforeEach((to, from, next) => {
   window.document.title = to.meta.title;
   if (!Cookies.get("accessToken") && to.name !== "login") {
     router.push({
-      name: "login",
+      name: "login"
     });
   } else {
     next();

@@ -3,7 +3,7 @@
  * @Date: 2020-10-14 08:01:57
  * @Description:
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-14 16:29:03
+ * @LastEditTime: 2020-10-15 18:29:33
  * @FilePath: \vue3.0-tung-base\babel.config.js
  */
 module.exports = {

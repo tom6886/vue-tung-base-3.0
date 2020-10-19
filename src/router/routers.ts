@@ -1,9 +1,9 @@
 /*
  * @Author: 汤波
  * @Date: 2020-10-14 15:33:50
- * @Description: 
+ * @Description:
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-14 15:59:52
+ * @LastEditTime: 2020-10-19 16:44:17
  * @FilePath: \vue3.0-tung-base\src\router\routers.ts
  */
 import { RouteRecordRaw } from "vue-router";
@@ -22,10 +22,18 @@ export const appRouter: Array<RouteRecordRaw> = [
     path: "/login",
     name: "login",
     meta: {
-      title: "Login - 登录",
+      title: "Login - 登录"
     },
-    component: () => import("@/views/login/Login.vue"),
+    component: () => import("@/views/login/Login.vue")
   },
+  {
+    path: "/index",
+    name: "index",
+    meta: {
+      title: "Index - 首页"
+    },
+    component: () => import("@/views/index/Index.vue")
+  }
 ];
 
 export default [...appRouter];

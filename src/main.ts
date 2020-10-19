@@ -3,7 +3,7 @@
  * @Date: 2020-10-14 08:01:57
  * @Description:
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-14 16:41:16
+ * @LastEditTime: 2020-10-19 15:32:03
  * @FilePath: \vue3.0-tung-base\src\main.ts
  */
 import { createApp } from "vue";
