@@ -3,10 +3,25 @@
  * @Date: 2020-10-19 14:40:09
  * @Description:
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-19 14:40:18
- * @FilePath: \vue3.0-tung-base\src\utils\util.ts
+ * @LastEditTime: 2020-10-25 20:19:07
+ * @FilePath: \web\src\utils\util.ts
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IR, IResPage, IPage } from "@/model/common";
+
+function isR(object: any): object is IR<any> {
+  return "code" in object && "message" in object && "data" in object;
+}
+
+function isPage(object: any): object is IResPage {
+  return (
+    "current" in object &&
+    "pages" in object &&
+    "total" in object &&
+    "size" in object &&
+    "records" in object
+  );
+}
 
 export function transData(data: any) {
   if (!isR(data) || typeof data.data !== "object") {
@@ -29,18 +44,4 @@ export function transData(data: any) {
   }
 
   return data;
-}
-
-function isR(object: any): object is IR<any> {
-  return "code" in object && "msg" in object && "data" in object;
-}
-
-function isPage(object: any): object is IResPage {
-  return (
-    "current" in object &&
-    "pages" in object &&
-    "total" in object &&
-    "size" in object &&
-    "records" in object
-  );
 }

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import Cookies from "js-cookie";
 import { transData } from "./util";
 import router from "@/router";
 import qs, { IStringifyOptions } from "qs";
 import { IR } from "@/model/common";
+import { message } from "ant-design-vue";
 
 // axios 配置
 axios.defaults.timeout = 6000;
@@ -17,7 +19,7 @@ axios.interceptors.response.use(
       Cookies.remove("accessRouter");
       Cookies.remove("accessToken");
       router.push({
-        name: "login",
+        name: "login"
       });
     }
 
@@ -33,7 +35,7 @@ axios.interceptors.response.use(
 
     return Promise.reject(res);
   },
-  (error) => {
+  error => {
     if (
       error.response &&
       (error.response.status === 401 || error.response.status === 403)
@@ -41,7 +43,7 @@ axios.interceptors.response.use(
       Cookies.remove("accessRouter");
       Cookies.remove("accessToken");
       router.push({
-        name: "login",
+        name: "login"
       });
     }
     return Promise.reject(error);
@@ -73,14 +75,16 @@ export function post<T>(
     axios
       .post(url, params, {
         headers: headers,
-        timeout: 600000,
+        timeout: 600000
       })
-      .then((res) => {
-        if (res.data.code != 206) {
-          resolve(res.data);
+      .then(res => {
+        if (res.data.code !== 200) {
+          message.error(res.data.message);
+          return;
         }
+        resolve(res.data);
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
@@ -102,12 +106,12 @@ export function get(url: string, params?: any): Promise<any> {
   return new Promise((resolve, reject) => {
     axios
       .get(url, { params: params, headers: headers })
-      .then((res) => {
+      .then(res => {
         if (res.data.code != 206) {
           resolve(res.data);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
@@ -129,14 +133,14 @@ export function upload(
       .post(url, formData, {
         headers: headers,
         timeout: 120000,
-        ...config,
+        ...config
       })
-      .then((res) => {
+      .then(res => {
         if (res.data.code != 206) {
           resolve(res.data);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });

@@ -1,3 +1,11 @@
+/*
+ * @Author: 汤波
+ * @Date: 2020-10-20 09:52:48
+ * @Description:
+ * @LastEditors: 汤波
+ * @LastEditTime: 2020-10-25 19:06:19
+ * @FilePath: \web\src\model\common.ts
+ */
 import { Message } from "ant-design-vue/types/message";
 import { Router } from "vue-router";
 import { IStringifyOptions } from "qs";
@@ -22,6 +30,16 @@ export interface IResPage {
   total: string;
   size: string;
   records: object[];
+}
+
+export interface IPagination {
+  current: number;
+  pageSize: number;
+  total?: number;
+}
+
+export interface IModal<T> {
+  showModal: (value?: T) => void;
 }
 
 export interface IGlobalProperties {

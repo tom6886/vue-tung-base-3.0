@@ -3,10 +3,11 @@
  * @Date: 2020-10-14 15:33:50
  * @Description:
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-19 16:44:17
- * @FilePath: \vue3.0-tung-base\src\router\routers.ts
+ * @LastEditTime: 2020-10-20 16:32:10
+ * @FilePath: \web\src\router\routers.ts
  */
 import { RouteRecordRaw } from "vue-router";
+import Main from "@/views/Main.vue";
 
 // export const page404: RouteRecordRaw = {
 //   path: "/*",
@@ -27,12 +28,18 @@ export const appRouter: Array<RouteRecordRaw> = [
     component: () => import("@/views/login/Login.vue")
   },
   {
-    path: "/index",
-    name: "index",
-    meta: {
-      title: "Index - 首页"
-    },
-    component: () => import("@/views/index/Index.vue")
+    path: "/",
+    component: Main,
+    children: [
+      {
+        path: "/index",
+        name: "index",
+        meta: {
+          title: "Index - 首页"
+        },
+        component: () => import("@/views/index/Index.vue")
+      }
+    ]
   }
 ];
 

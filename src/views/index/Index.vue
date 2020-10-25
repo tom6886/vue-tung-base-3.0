@@ -1,13 +1,20 @@
 <!--
  * @Author: 汤波
- * @Date: 2020-10-19 16:43:19
+ * @Date: 2020-10-20 09:52:48
  * @Description: 
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-19 16:43:36
+ * @LastEditTime: 2020-10-25 19:23:02
  * @FilePath: \vue3.0-tung-base\src\views\Index\Index.vue
 -->
 <template>
-  <div>
-    我是首页
-  </div>
+  <TestTable />
 </template>
+
+<script lang="ts">
+import TestTable from "@/components/test/Test-Table.vue";
+export default {
+  components: {
+    TestTable
+  }
+};
+</script>

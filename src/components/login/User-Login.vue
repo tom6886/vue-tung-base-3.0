@@ -3,17 +3,21 @@
  * @Date: 2020-10-15 16:37:21
  * @Description: 
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-19 16:42:43
- * @FilePath: \vue3.0-tung-base\src\components\login\User-Login.vue
+ * @LastEditTime: 2020-10-25 17:36:11
+ * @FilePath: \web\src\components\login\User-Login.vue
 -->
 <template>
   <div>
-    <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
+    <a-form :label-col="labelCol" :wrapper-col="wrapperCol" hideRequiredMark>
       <a-form-item label="用户名" v-bind="validateInfos.username">
         <a-input v-model:value="modelRef.username" />
       </a-form-item>
       <a-form-item label="密码" v-bind="validateInfos.password">
-        <a-input type="password" v-model:value="modelRef.password" />
+        <a-input
+          type="password"
+          @pressEnter="onSubmit"
+          v-model:value="modelRef.password"
+        />
       </a-form-item>
     </a-form>
     <a-button type="primary" block @click="onSubmit" :loading="loading"
@@ -31,7 +35,7 @@ import Cookies from "js-cookie";
 export default {
   name: "UserLogin",
   setup() {
-    const { post, message, router } = inject<IGlobalProperties>(
+    const { post, router } = inject<IGlobalProperties>(
       "globalProperties",
       {} as never
     );
@@ -56,12 +60,9 @@ export default {
     const { validate, validateInfos } = useForm(modelRef, rulesRef);
 
     const login = async () => {
+      loading.value = true;
       const res: IR<string> = await post("/system/user/login", modelRef);
-      if (res.code !== 200) {
-        message.error(res.msg);
-        loading.value = false;
-        return;
-      }
+      loading.value = false;
       Cookies.set("accessToken", res.data);
       router.push({
         name: "index"

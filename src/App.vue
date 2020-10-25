@@ -3,8 +3,8 @@
  * @Date: 2020-10-14 08:01:57
  * @Description: 
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-19 16:48:05
- * @FilePath: \vue3.0-tung-base\src\App.vue
+ * @LastEditTime: 2020-10-25 18:22:47
+ * @FilePath: \web\src\App.vue
 -->
 <template>
   <div id="app">
