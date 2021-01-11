@@ -3,7 +3,7 @@
  * @Date: 2020-10-25 13:35:30
  * @Description: 
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-25 19:24:09
+ * @LastEditTime: 2020-10-28 16:58:26
  * @FilePath: \vue3.0-tung-base\src\components\test\Test-Modal.vue
 -->
 <template>
@@ -38,7 +38,7 @@ import { IGlobalProperties } from "@/model/common";
 export default {
   name: "TestModal",
   emits: ["on-submit"],
-  setup(props: never, { emit }: SetupContext) {
+  setup(props: any, { emit }: SetupContext) {
     const { post, message } = inject<IGlobalProperties>(
       "globalProperties",
       {} as never

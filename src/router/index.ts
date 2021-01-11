@@ -3,15 +3,15 @@
  * @Date: 2020-10-14 15:23:37
  * @Description:
  * @LastEditors: 汤波
- * @LastEditTime: 2020-10-14 16:13:29
- * @FilePath: \vue3.0-tung-base\src\router\index.ts
+ * @LastEditTime: 2021-01-11 15:34:55
+ * @FilePath: \zdgl-h5e:\Git\vue3.0-tung-base\src\router\index.ts
  */
 import { createRouter, createWebHistory } from "vue-router";
 import Cookies from "js-cookie";
 import routes from "./routers";
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.VUE_APP_BASE_URL),
   routes
 });
 
